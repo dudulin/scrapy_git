@@ -16,11 +16,16 @@ class ChangeSetting:
         with open(self.path, 'r', encoding='utf-8') as file:
             return message in file.read()
 
+    def __creat_run__(self):
+        path = self.path.split('/')[0] + '/run.py'
+        with open(path, 'w+', encoding='utf-8') as file:
+            file.write(self.runFile)
+
     def reset(self):
         if not self.__has_reset__('已经reset成功'):
             with open(self.path, 'a+', encoding='utf-8') as file:
                 file.write(self.newConfig)
-                self.creat_run()
+                self.__creat_run__()
                 print('设置成功')
         else:
             print('已设置')
@@ -38,12 +43,6 @@ class ChangeSetting:
             file_str = file.read().split('\n')
             print(file_str)
 
-    def creat_run(self):
-        path = self.path.split('/')[0] + '/run.py'
-        with open(path, 'w+', encoding='utf-8') as file:
-            file.write(self.runFile)
-
 
 comicK = ChangeSetting('comic')
 comicK.reset()
-# comicK.creat_run()

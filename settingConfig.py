@@ -60,12 +60,12 @@ DB_COLLECTION = 'ipCollection'
 
 filePath_config = {
     'comic': 'comicK/comicK/settings.py',
-    'music163': 'music163/comicK/settings.py'
+    'downloadMusic': 'music163/comicK/settings.py'
 }
 run_file_config = '''
 from scrapy import cmdline
 
-cmdline.execute('scrapy crawl {} -o message.json'.split())
+cmdline.execute('scrapy crawl {} -o message.json -s LOG_FILE=all.log'.split())
 # cmdline.execute('scrapy crawl kkk2 -o kkk2.json'.split())  # 运行模式
 # ctrl + shift + F10   运行当前文件
 

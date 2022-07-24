@@ -12,12 +12,16 @@ BOT_NAME = 'comicK'
 SPIDER_MODULES = ['comicK.spiders']
 NEWSPIDER_MODULE = 'comicK.spiders'
 
+# 打开管道，使用图片下载功能
+ITEM_PIPELINES = {
+    'comicK.pipelines.ComickPipeline': 300,
+}
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'comicK (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -37,34 +41,31 @@ ROBOTSTXT_OBEY = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
+# DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
-#}
+# }
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
+# SPIDER_MIDDLEWARES = {
 #    'comicK.middlewares.ComickSpiderMiddleware': 543,
-#}
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+# DOWNLOADER_MIDDLEWARES = {
 #    'comicK.middlewares.ComickDownloaderMiddleware': 543,
-#}
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+# EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
+# }
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'comicK.pipelines.ComickPipeline': 300,
-#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -108,8 +109,9 @@ USER_AGENT_LIST = [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
     "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"]
 
-FEED_EXPORT_ENCODING = 'utf-8'  # 编码格式
+# FEED_EXPORT_ENCODING = 'utf-8'  # 编码格式
 IMAGES_STORE = 'images'  # 设置保存图片的根目录
+
 DOWNLOAD_DELAY = 1   # 操作都延迟1秒
 
 # 418 反爬虫检测到了 添加 表头
@@ -126,6 +128,6 @@ IP_LIST = [
     # {"ip": "111.231.86.149:7890"}
 ]
 
-COOKIES_ENABLED = True  # 使用 返回的cookie
+# COOKIES_ENABLED = True  # 使用 返回的cookie
 
 # 已经reset成功

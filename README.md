@@ -37,8 +37,7 @@
 
 目标：
 
-1.获取 url title path images 
-2.再 创建文件  和 下载图片 
+1.获取 url title path images
 
 先修改 item.py
 
@@ -48,6 +47,26 @@
         image_urls = scrapy.Field()
         image_paths = scrapy.Field()
         images = scrapy.Field()
+
+之后spider 下的主函数  parse 主动运行函数 , start_requests 分页函数
+
+        def parse(self, response):
+            lists = response.xpath('//div[@class="mh-item"]')
+
+
+2.再 创建文件  和 下载图片 
+
+        # 少了一个插件 就失效了 也不报错  坑爹啊
+        pip install -i https://pypi.doubanio.com/simple/ --trusted-host pypi.doubanio.com pillow
+
+            def parse(self, response):
+        lists = response.xpath('//div[@class="mh-item"]')
+        for i in lists:
+            items = ComickItem()
+            items['title'] = i.xpath('.//h2/a/text()').get()
+
+        # 第二个坑  需要字符串，但是保持了 数组 需要 for
+
 
 
 ---
