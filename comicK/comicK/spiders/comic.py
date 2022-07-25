@@ -2,6 +2,15 @@ import scrapy
 from ..items import ComickItem  #
 
 
+# def reset_json(path):
+#     with open(path, mode='w+', encoding='utf-8') as file:
+#         print('88888888888')
+#         file.write('')
+#
+#
+# reset_json('../../message.json')
+
+
 class ComicSpider(scrapy.Spider):
     name = 'comic'
     allowed_domains = ['www.1kkk.com']
@@ -15,11 +24,11 @@ class ComicSpider(scrapy.Spider):
             items = ComickItem()
             items['title'] = i.xpath('.//h2/a/text()').get()
 
-            items['image_urls'] = [i.xpath(
-                './p/@style').get().replace('background-image: url(', '').replace(')', '')]
+            items['image_urls'] = i.xpath(
+                './p/@style').get().replace('background-image: url(', '').replace(')', '')
             yield items  # 发送给pipe 管道处理
 
     def start_requests(self):
-        for i in range(1, 3):
+        for i in range(1, 2):
             url = self.page_url.format(i)
             yield scrapy.Request(url=url, callback=self.parse)

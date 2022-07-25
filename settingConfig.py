@@ -24,6 +24,7 @@ USER_AGENT_LIST = [
 
 FEED_EXPORT_ENCODING = 'utf-8'  # 编码格式
 IMAGES_STORE = 'images'  # 设置保存图片的根目录
+FILES_STORE = 'files'
 DOWNLOAD_DELAY = 1   # 操作都延迟1秒
 
 # 418 反爬虫检测到了 添加 表头
@@ -60,12 +61,12 @@ DB_COLLECTION = 'ipCollection'
 
 filePath_config = {
     'comic': 'comicK/comicK/settings.py',
-    'downloadMusic': 'music163/comicK/settings.py'
+    'downloadMusic': 'music163/music163/settings.py'
 }
 run_file_config = '''
 from scrapy import cmdline
 
-cmdline.execute('scrapy crawl {} -o message.json -s LOG_FILE=all.log'.split())
+cmdline.execute('scrapy crawl {}'.split())
 # cmdline.execute('scrapy crawl kkk2 -o kkk2.json'.split())  # 运行模式
 # ctrl + shift + F10   运行当前文件
 

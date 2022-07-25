@@ -44,5 +44,8 @@ class ChangeSetting:
             print(file_str)
 
 
-comicK = ChangeSetting('comic')
-comicK.reset()
+# comicK = ChangeSetting('comic')
+# comicK.reset()
+
+downloadMusic = ChangeSetting('downloadMusic')
+downloadMusic.reset()
